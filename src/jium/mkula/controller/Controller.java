@@ -15,9 +15,9 @@ import jium.mkula.model.Model;
 import jium.mkula.view.View;
 
 /**
- * Controller for Pi_MonteCarlo
- * @author MATIK
- * @version 1.0.0
+ * Controller for PiMonteCarlo
+ * @author Mateusz Kula {matekul734@student.polsl.pl}
+ * @version 1.0.2
  */
 public class Controller {
     View view;
@@ -31,10 +31,10 @@ public class Controller {
      * Get number from user, larger=better
      * @return number of guesses, larger=better
      */
-    private long GetAccuracy(){
+    private long getAccuracy(){
         long accuracyInput = 0;
         String userInput = "";
-        view.ShowAccuracyQuery();
+        view.showAccuracyQuery();
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         try{
             userInput = in.readLine();
@@ -53,18 +53,18 @@ public class Controller {
     /**
      * Run without args
      */
-    public void Run(){
-        long temp = GetAccuracy();
+    public void run(){
+        long temp = getAccuracy();
         do{
-            view.ClearConsole();
+            view.clearConsole();
             if(temp != 0){
                 try {
-                    view.ShowMsg("Pi: " + model.CalculatePi(temp) + "\n");
+                    view.showMsg("Pi: " + model.calculatePi(temp) + "\n");
                 } catch (CalculatedPiDiffersException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.FINE, null, ex);
-                    view.ShowMsg(ex.getMessage());
+                    view.showMsg(ex.getMessage());
                 }
-                temp = GetAccuracy();
+                temp = getAccuracy();
             }
         }while(temp != 0);
     }
@@ -73,7 +73,7 @@ public class Controller {
      * Run with args
      * @param args command line args
      */
-    public void RunWithParams(String[] args){
+    public void runWithParams(String[] args){
         if(args[0].contains("-c")){
             if(args[1].length() > 0){
                 long accuracy;
@@ -84,7 +84,7 @@ public class Controller {
                     Logger.getLogger(Controller.class.getName()).log(Level.FINE, null, nfe);
                 }	
                 try {
-                    view.ShowMsg("Pi: " + model.CalculatePi(accuracy) + "\n");
+                    view.showMsg("Pi: " + model.calculatePi(accuracy) + "\n");
                 } catch (CalculatedPiDiffersException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }

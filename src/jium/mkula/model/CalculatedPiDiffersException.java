@@ -7,13 +7,14 @@ package jium.mkula.model;
 
 /**
  * Exception class for Pi_MonteCarlo
- * @author MATIK
- * @version 1.0.0
+ * @author Mateusz Kula {matekul734@student.polsl.pl}
+ * @version 1.0.2
  */
 public class CalculatedPiDiffersException extends Exception { 
     
     /**
     * Exception for sygnalizing huge difference in result
+    * @param errorMessage message describing exception
     */
     public CalculatedPiDiffersException(String errorMessage) {
         super(errorMessage);
